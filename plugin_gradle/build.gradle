@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile "com.android.tools.build:gradle:4.2.1"
+    compile 'org.javassist:javassist:3.22.0-GA'
+    compile 'org.aspectj:aspectjtools:1.8.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.hd.plugin_gradle'
+            pom.artifactId = 'demo'
+            pom.version = '1.0.0'
+            repository(url: uri('../Repo'))
+        }
+    }
+}
